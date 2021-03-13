@@ -1,0 +1,27 @@
+.header{
+    font-size: 22px;
+    letter-spacing: 10px;
+    border-radius: 10px;
+  }
+
+  .family{
+      width: 80%;
+  }
+  body
+{
+  color: white;
+  background: #c0d3ff;
+}
+#camera , #result
+{
+  border: 2px dashed black;
+  width: 350px;
+  height: 300px; 
+}
+label{
+    font-size: 14px;
+    color:deeppink;
+    padding: 6px;
+    border-radius: 10px;
+    background-color: azure;
+  }
