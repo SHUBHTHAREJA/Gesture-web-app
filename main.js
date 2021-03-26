@@ -4,35 +4,33 @@ Webcam.set({
     img_format:'png',
     img_quality:90
     });
-    
+
     camera=document.getElementById("camera");
-    
-    Webcam.attach('#camera');
 
-    function takesnap(){
-        Webcam.snap(function(data_uri){
-            document.getElementById("result").innerHTML='<img id="capture_img" src="'+data_uri+'" />';
-        })    
-        }
+Webcam.attach('#camera');
 
-        console.log("ml5 version",ml5.version);
+function takesnap(){
+    Webcam.snap(function(data_uri){
+        document.getElementById("result").innerHTML='<img id="capture_img" src="'+data_uri+'" />';
+    })    
+    }
 
-        classifier=ml5.imageClassifier("",modelLoaded);
+    console.log("ml5 version",ml5.version);
+
+classifier=ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/AYGpZsYXv/",modelLoaded);
 
 function modelLoaded(){
     console.log("model loaded");
 }
+function speak(){
+    var synth=window.speechSynthesis;
+    speakData1="perdection 1 is "+pridection1;
+    speakData2="perdection 2 is "+pridection2;
+    var utter_this= new SpeechSynthesisUtterance (speakData1+speakData2);
+    synth.speak(utter_this);
+}
 
 function check(){
-    img=document.getElementById('captured_image');
-    classifier.classify(img, gotResult)
+    img=document.getElementById('capture_img');
+    classifier.classify(img,got_result)
 }
-function gotResult(error,results){
-    if (error) {
-        console.error(error)
-    } else {
-        console.log(results);
-        document.getElementById("object").innerHTML=results[0].label;
-        document.getElementById("Accuracy").innerHTML=results[0].confidence.toFixed(3);
-    }
-    }
